@@ -28,7 +28,7 @@ backend:
 frontend:
   image:
     repository: ghcr.io/davidc-dev/demo-app-frontend
-    tag: 1.3
+    tag: 1.4
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
