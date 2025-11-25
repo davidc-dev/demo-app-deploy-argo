@@ -14,13 +14,6 @@ backend:
     argocdUrlKey: ARGOCD_URL
     argocdTokenKey: ARGOCD_TOKEN
     argocdDisableTlsKey: ARGOCD_DISABLE_TLS
-  route:
-    enabled: true
-    host: ""
-    tls:
-      termination: edge
-      insecureEdgeTerminationPolicy: Redirect
-    annotations: {}
   appsDomain: "demo.dcdevlab.net"
   resources: {}
   replicas: 1
@@ -29,14 +22,13 @@ backend:
 frontend:
   image:
     repository: ghcr.io/davidc-dev/demo-app-frontend
-    tag: 1.7
+    tag: 1.9
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
     port: 80
     targetPort: 8080
   config:
-    apiBaseUrl: "https://node-red-device-workflow-backend-device-apps.apps.demo.dcdevlab.net"
     argocdUrl: "https://openshift-gitops-server-openshift-gitops.apps.demo.dcdevlab.net"
     devSpacesUrl: "https://devspaces.apps.demo.dcdevlab.net/"
   resources: {}
