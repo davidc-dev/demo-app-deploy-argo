@@ -21,6 +21,7 @@ backend:
       termination: edge
       insecureEdgeTerminationPolicy: Redirect
     annotations: {}
+  appsDomain: "demo.dcdevlab.net"
   resources: {}
   replicas: 1
 
