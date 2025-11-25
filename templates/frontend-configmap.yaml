@@ -6,9 +6,13 @@ metadata:
     app.kubernetes.io/name: {{ include "device-workflow.name" . }}
     app.kubernetes.io/component: frontend
     app.kubernetes.io/instance: {{ .Release.Name }}
+{{- $apiBase := .Values.frontend.config.apiBaseUrl }}
+{{- if not $apiBase }}
+{{- $apiBase = printf "http://%s.%s.svc.cluster.local" (include "device-workflow.backendName" .) .Release.Namespace }}
+{{- end }}
 data:
   env-config.js: |
     window.__APP_CONFIG__ = window.__APP_CONFIG__ || {
-      apiBaseUrl: "{{ .Values.frontend.config.apiBaseUrl }}",
+      apiBaseUrl: "{{ $apiBase }}",
       argocdUrl: "{{ .Values.frontend.config.argocdUrl }}"
     };
