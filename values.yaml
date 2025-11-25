@@ -29,7 +29,7 @@ backend:
 frontend:
   image:
     repository: ghcr.io/davidc-dev/demo-app-frontend
-    tag: 1.6
+    tag: 1.7
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
@@ -38,6 +38,7 @@ frontend:
   config:
     apiBaseUrl: "https://node-red-device-workflow-backend-device-apps.apps.demo.dcdevlab.net"
     argocdUrl: "https://openshift-gitops-server-openshift-gitops.apps.demo.dcdevlab.net"
+    devSpacesUrl: "https://devspaces.apps.demo.dcdevlab.net/"
   resources: {}
   replicas: 1
 
