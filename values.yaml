@@ -35,7 +35,7 @@ frontend:
     port: 80
     targetPort: 8080
   config:
-    apiBaseUrl: "https://node-red-device-workflow-backend.apps.demo.dcdevlab.net"
+    apiBaseUrl: "https://node-red-device-workflow-backend-device-apps.apps.demo.dcdevlab.net"
     argocdUrl: "https://openshift-gitops-server-openshift-gitops.apps.demo.dcdevlab.net"
   resources: {}
   replicas: 1
