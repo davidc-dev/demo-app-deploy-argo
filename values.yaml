@@ -1,0 +1,35 @@
+backend:
+  image:
+    repository: ghcr.io/example/device-workflow-backend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+    targetPort: 8000
+  envSecret:
+    name: device-workflow-secrets
+    tokenKey: GITHUB_TOKEN
+    usernameKey: GITHUB_USERNAME
+  resources: {}
+  replicas: 1
+
+frontend:
+  image:
+    repository: ghcr.io/example/device-workflow-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+    targetPort: 8080
+  resources: {}
+  replicas: 1
+
+route:
+  enabled: false
+  host: ""
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  annotations: {}
