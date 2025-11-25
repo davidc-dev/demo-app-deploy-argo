@@ -29,7 +29,7 @@ frontend:
   replicas: 1
 
 route:
-  enabled: false
+  enabled: true
   host: ""
   tls:
     termination: edge
