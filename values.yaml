@@ -1,7 +1,7 @@
 backend:
   image:
-    repository: ghcr.io/example/device-workflow-backend
-    tag: latest
+    repository: ghcr.io/davidc-dev/demo-app-backend
+    tag: 1
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
@@ -16,13 +16,15 @@ backend:
 
 frontend:
   image:
-    repository: ghcr.io/example/device-workflow-frontend
-    tag: latest
+    repository: ghcr.io/davidc-dev/demo-app-frontend
+    tag: 1.1
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
     port: 80
     targetPort: 8080
+  config:
+    apiBaseUrl: "http://device-workflow-backend.device-apps.svc.cluster.local"
   resources: {}
   replicas: 1
 

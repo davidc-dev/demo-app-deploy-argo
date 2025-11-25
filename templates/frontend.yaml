@@ -26,6 +26,10 @@ spec:
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.frontend.service.targetPort }}
+          volumeMounts:
+            - name: frontend-config
+              mountPath: /opt/app-root/src/env-config.js
+              subPath: env-config.js
           readinessProbe:
             httpGet:
               path: /
@@ -40,6 +44,10 @@ spec:
             periodSeconds: 20
           resources:
 {{ toYaml .Values.frontend.resources | indent 12 }}
+      volumes:
+        - name: frontend-config
+          configMap:
+            name: {{ include "device-workflow.frontendName" . }}-config
 ---
 apiVersion: v1
 kind: Service
