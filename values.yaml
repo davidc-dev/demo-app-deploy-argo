@@ -24,7 +24,7 @@ frontend:
     port: 80
     targetPort: 8080
   config:
-    apiBaseUrl: "http://device-workflow-backend.device-apps.svc.cluster.local"
+    apiBaseUrl: "http://node-red-device-workflow-backend.device-apps.svc.cluster.local"
   resources: {}
   replicas: 1
 
